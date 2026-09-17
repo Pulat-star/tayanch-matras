@@ -4,246 +4,235 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tayanch Matraslar</title>
-<meta name="description" content="Tayanch — modulli matraslar, ko‘rpachalar va topperlar katalogi. 3 zonali qattiqlik, 100 kecha sinov, 10 yil kafolat.">
-<meta name="theme-color" content="#141A33">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23141A33'/%3E%3Crect x='6' y='9' width='20' height='4' rx='2' fill='%23C9D6F7'/%3E%3Crect x='6' y='15' width='20' height='4' rx='2' fill='%237D92E3'/%3E%3Crect x='6' y='21' width='20' height='4' rx='2' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="Uch zonali modulli matraslar, ko‘rpachalar va topperlar. 100 kecha sinov, 0% muddatli to‘lov, Toshkentda 24 soatda bepul yetkazish.">
+<meta name="theme-color" content="#07080D">
+<meta property="og:title" content="Tayanch — zonali matraslar ko‘rgazmasi">
+<meta property="og:description" content="Qattiqlikni o‘zingiz tanlang: 3 zonali matraslar, 100 kecha sinov, 10 yil kafolat.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307080D'/%3E%3Crect x='6' y='9' width='20' height='4' rx='2' fill='%23C9D6F7'/%3E%3Crect x='6' y='15' width='20' height='4' rx='2' fill='%237D92E3'/%3E%3Crect x='6' y='21' width='20' height='4' rx='2' fill='%23F2B544'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@400;500&family=Unbounded:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css">
+<script>
+  // Shriftlar sahifa chizilishini to‘smasligi uchun keyinroq ulanadi
+  (function () {
+    var l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@400&family=Unbounded:wght@300;400;500&display=swap";
+    document.head.appendChild(l);
+  })();
+</script>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@400&family=Unbounded:wght@300;400;500&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js" crossorigin>
 <script type="importmap">
 { "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
 } }
 </script>
-<script type="module" src="app.js"></script>
+<script>document.documentElement.classList.add("js");</script>
+<script type="module" src="assets/js/app.js"></script>
 </head>
 <body>
 
+<canvas id="gl" aria-hidden="true"></canvas>
 <a class="skip" href="#catalog" data-i18n="nav.catalog">Katalog</a>
 
-<div class="promo" aria-label="Aksiyalar">
-  <ul class="promo__list">
-    <li data-i18n="promo.1">100 kecha bepul sinab ko‘ring</li>
-    <li data-i18n="promo.2">Toshkent bo‘ylab bepul yetkazib berish</li>
-    <li data-i18n="promo.3">0% muddatli to‘lov — 12 oygacha</li>
-    <li data-i18n="promo.4">10 yil kafolat</li>
-  </ul>
-</div>
-<div class="ikat-strip" aria-hidden="true"></div>
-
-<header class="hdr" id="top">
+<header class="hdr" id="hdr">
   <div class="hdr__in wrap">
     <a class="logo" href="#top" aria-label="Tayanch">
-      <svg class="logo__mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="5" rx="2.5" class="lm1"/><rect x="2" y="11.5" width="24" height="5" rx="2.5" class="lm2"/><rect x="2" y="18" width="24" height="5" rx="2.5" class="lm3"/></svg>
-      <span class="logo__word" data-brand>tayanch</span>
+      <svg class="logo__mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="5" rx="2.5" fill="#C9D6F7"/><rect x="2" y="11.5" width="24" height="5" rx="2.5" fill="#7D92E3"/><rect x="2" y="18" width="24" height="5" rx="2.5" fill="#F2B544"/></svg>
+      <span class="logo__word">tayanch</span>
     </a>
     <nav class="nav" id="nav" aria-label="Asosiy">
       <a href="#catalog" data-i18n="nav.catalog">Katalog</a>
-      <a href="#zones" data-i18n="nav.zones">Zonalar</a>
-      <a href="#compare" data-i18n="nav.compare">Solishtirish</a>
-      <a href="#service" data-i18n="nav.service">Xizmatlar</a>
+      <a href="#quiz" data-i18n="nav.quiz">Tanlash testi</a>
+      <a href="#inside" data-i18n="nav.inside">Ichida nima bor</a>
+      <a href="#service" data-i18n="nav.service">Xizmat</a>
       <a href="#faq" data-i18n="nav.faq">Savollar</a>
     </nav>
     <div class="hdr__tools">
-      <a class="hdr__phone" href="tel:+998711234567">+998 71 123 45 67</a>
+      <a class="hdr__phone mono" data-phone href="tel:+998711234567">+998 71 123 45 67</a>
       <div class="lang" role="group" data-i18n-aria="nav.lang" aria-label="Tilni tanlang">
         <button type="button" class="lang__b" data-lang="uz" aria-pressed="true">UZ</button>
         <button type="button" class="lang__b" data-lang="ru" aria-pressed="false">RU</button>
       </div>
-      <button type="button" class="cart-btn" id="cartOpen" aria-haspopup="dialog">
+      <a class="btn btn--accent btn--sm hdr__cta" href="#lead" data-i18n="nav.cta">Bepul maslahat</a>
+      <button type="button" class="icon-btn cart-btn" data-open-cart aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
         <span class="vh" data-i18n="nav.cart">Savat</span>
-        <span class="cart-btn__n" id="cartCount">0</span>
+        <span class="cart-n" data-cart-count data-zero>0</span>
       </button>
-      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav">
+      <button type="button" class="icon-btn burger" id="burger" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span class="vh" data-i18n="nav.menu">Menyu</span>
       </button>
     </div>
   </div>
 </header>
 
-<main>
-  <!-- 3D hikoya: scroll bilan matras qatlamlarga ajraladi -->
-  <section class="story" id="story" aria-labelledby="heroTitle">
-    <div class="story__stage">
-      <div class="story__view view" data-view="story" aria-hidden="true"><div class="fallback"></div></div>
+<main id="main">
+  <!-- Vitrina: 3D matraslar yoy bo‘ylab -->
+  <section class="hero" id="top" aria-labelledby="heroTitle">
+    <div class="hero__poster" aria-hidden="true">
+      <div class="poster__beam"></div>
+      <div class="poster__row"><i></i><i></i><i class="is-c"></i><i></i><i></i></div>
+      <div class="poster__pod"></div>
+    </div>
+    <div class="hero__stage" id="showroomStage" aria-hidden="true"></div>
 
-      <svg class="anno" id="anno" aria-hidden="true">
-        <g data-a="cover"><line/><circle r="3.5"/></g>
-        <g data-a="comfort"><line/><circle r="3.5"/></g>
-        <g data-a="core"><line/><circle r="3.5"/></g>
-        <g data-a="base"><line/><circle r="3.5"/></g>
-      </svg>
-      <div class="anno-labels" aria-hidden="true">
-        <div class="alabel" data-a="cover"><b data-i18n="l.cover">Yuviladigan g‘ilof</b><span data-i18n="l.cover.s">40 °C da yuviladi</span></div>
-        <div class="alabel" data-a="comfort"><b data-i18n="l.comfort">Sovutuvchi qatlam</b><span data-i18n="l.comfort.s">3D to‘r · 3 sm</span></div>
-        <div class="alabel" data-a="core"><b data-i18n="l.core">Havo tolali bloklar</b><span data-i18n="l.core.s">3 zona · 15 sm</span></div>
-        <div class="alabel" data-a="base"><b data-i18n="l.base">Sirpanmaydigan asos</b><span data-i18n="l.base.s">zich tola · 2 sm</span></div>
-      </div>
-      <div class="ztags" id="storyTags" aria-hidden="true">
-        <span class="ztag" data-z="0"></span><span class="ztag" data-z="1"></span><span class="ztag" data-z="2"></span>
-      </div>
-
-      <div class="story__text wrap">
-        <div class="chapter is-on" data-ch="0">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Matraslar katalogi · 2026</p>
-          <h1 class="display" id="heroTitle" data-i18n="hero.title">Qattiqlikni o‘zingiz tanlang</h1>
-          <p class="lead" data-i18n="hero.lead">Uch zonali modulli matraslar: yelka, bel va oyoqlar uchun alohida tayanch. G‘ilofi yuviladi, ichidan havo o‘tadi.</p>
+    <div class="hero__ui wrap">
+      <div class="hero__top">
+        <div class="hero__copy">
+          <p class="eyebrow intro" style="--d:.05s" data-i18n="hero.eyebrow">Tayanch · uyqu ko‘rgazmasi</p>
+          <h1 class="display intro" style="--d:.15s" id="heroTitle" data-i18n-html="hero.title">Qattiqlikni <em>o‘zingiz</em> tanlang</h1>
+        </div>
+        <div class="hero__aside intro" style="--d:.35s">
+          <p class="hero__sub" data-i18n="hero.sub">Uch zonali modulli matraslar: yelka, bel va oyoq uchun alohida tayanch.</p>
           <div class="actions">
-            <a class="btn btn--primary" href="#catalog" data-i18n="hero.cta1">Katalogni ko‘rish</a>
-            <a class="btn btn--line" href="#zones" data-i18n="hero.cta2">Zonalarni sozlash</a>
+            <a class="btn btn--accent" href="#quiz" data-track="hero_quiz"><span data-i18n="hero.cta1">30 soniyada matras tanlash</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--glass" href="#catalog" data-i18n="hero.cta2">Katalogni ko‘rish</a>
           </div>
-          <dl class="facts">
-            <div><dt data-i18n="hero.f1n">100 kecha</dt><dd data-i18n="hero.f1">sinov muddati</dd></div>
-            <div><dt data-i18n="hero.f2n">10 yil</dt><dd data-i18n="hero.f2">kafolat</dd></div>
-            <div><dt data-i18n="hero.f3n">3 zona</dt><dd data-i18n="hero.f3">har biri o‘z qattiqligida</dd></div>
-          </dl>
-        </div>
-
-        <div class="chapter" data-ch="1">
-          <p class="eyebrow" data-i18n="layers.kicker">Ichida nima bor</p>
-          <h2 class="h2" data-i18n="layers.title">To‘rt qatlam, bitta vazifa — tinch uyqu</h2>
-          <p class="lead" data-i18n="layers.text">Har bir qatlamni alohida chiqarib, tozalab yoki almashtirish mumkin.</p>
-          <ol class="layer-list">
-            <li><b data-i18n="l.cover">Yuviladigan g‘ilof</b> <span data-i18n="l.cover.s">40 °C da yuviladi</span></li>
-            <li><b data-i18n="l.comfort">Sovutuvchi qatlam</b> <span data-i18n="l.comfort.s">3D to‘r · 3 sm</span></li>
-            <li><b data-i18n="l.core">Havo tolali bloklar</b> <span data-i18n="l.core.s">3 zona · 15 sm</span></li>
-            <li><b data-i18n="l.base">Sirpanmaydigan asos</b> <span data-i18n="l.base.s">zich tola · 2 sm</span></li>
-          </ol>
-        </div>
-
-        <div class="chapter" data-ch="2">
-          <p class="eyebrow" data-i18n="zones.kicker">Uch zona</p>
-          <h2 class="h2" data-i18n="zones.title">Yelka, bel va oyoq — har biriga o‘z qattiqligi</h2>
-          <p class="lead" data-i18n="zones.text">Bloklar ikki tomonli.</p>
-          <div class="story-scheme">
-            <span class="scheme" id="storyScheme">2-2-2</span>
-            <p id="storySchemeText"></p>
-          </div>
-          <ul class="legend">
-            <li><i class="sw sw--1"></i><span>1 · <span data-i18n="firm.1">Yumshoq</span></span></li>
-            <li><i class="sw sw--2"></i><span>2 · <span data-i18n="firm.2">O‘rta</span></span></li>
-            <li><i class="sw sw--3"></i><span>3 · <span data-i18n="firm.3">Qattiq</span></span></li>
-          </ul>
-        </div>
-
-        <div class="chapter" data-ch="3">
-          <p class="eyebrow" data-i18n="air.kicker">Havo va gigiyena</p>
-          <h2 class="h2" data-i18n="air.title">Tola orasidan havo o‘tadi — issiq kechada ham salqin</h2>
-          <p class="lead" data-i18n="air.text">Havo tolasi issiqlik va namlikni tashqariga chiqaradi.</p>
-          <dl class="facts facts--col">
-            <div><dt data-i18n="air.f1n">40 °C</dt><dd data-i18n="air.f1">g‘ilof mashinada yuviladi</dd></div>
-            <div><dt data-i18n="air.f2n">Dush</dt><dd data-i18n="air.f2">bloklarni suv bilan chayish mumkin</dd></div>
-            <div><dt data-i18n="air.f3n">3 oy</dt><dd data-i18n="air.f3">bloklarni aylantirib qo‘ying</dd></div>
-          </dl>
         </div>
       </div>
 
-      <div class="story__rail wrap" aria-hidden="true">
-        <ol class="rail">
-          <li class="is-on"><i></i><span data-i18n="ch.0">Matras</span></li>
-          <li><i></i><span data-i18n="ch.1">Qatlamlar</span></li>
-          <li><i></i><span data-i18n="ch.2">Zonalar</span></li>
-          <li><i></i><span data-i18n="ch.3">Havo</span></li>
-        </ol>
-        <p class="rail__hint" data-i18n="hero.hint">Pastga suring — matrasni qatlamlarga ajratamiz</p>
+      <div class="hero__bottom intro" style="--d:.55s">
+        <div class="sr" role="region" aria-roledescription="carousel" data-i18n-aria="sr.label" aria-label="Matraslar vitrinasi">
+          <button type="button" class="sr__arrow" data-sr="-1" data-i18n-aria="sr.prev" aria-label="Oldingi matras">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <div class="sr__card" id="srCard" aria-live="polite"></div>
+          <button type="button" class="sr__arrow" data-sr="1" data-i18n-aria="sr.next" aria-label="Keyingi matras">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="sr__meta">
+          <div class="sr__dots" id="srDots"></div>
+          <p class="sr__hint mono" data-i18n="sr.hint">Suring yoki strelkalarni bosing</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <ul class="marquee__list">
+        <li data-i18n="mq.1"></li><li data-i18n="mq.2"></li><li data-i18n="mq.3"></li><li data-i18n="mq.4"></li><li data-i18n="mq.5"></li><li data-i18n="mq.6"></li>
+      </ul>
+      <ul class="marquee__list">
+        <li data-i18n="mq.1"></li><li data-i18n="mq.2"></li><li data-i18n="mq.3"></li><li data-i18n="mq.4"></li><li data-i18n="mq.5"></li><li data-i18n="mq.6"></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Katalog -->
   <section class="sec catalog" id="catalog" aria-labelledby="catTitle">
     <div class="wrap">
-      <div class="sec__head">
+      <div class="sec__head reveal">
         <p class="eyebrow" data-i18n="cat.kicker">Katalog</p>
         <h2 class="h2" id="catTitle" data-i18n="cat.title">Matraslar, ko‘rpachalar va topperlar</h2>
-        <p class="sec__text" data-i18n="cat.text">O‘lchamni tanlang — narxlar darhol yangilanadi.</p>
+        <p class="sec__text" data-i18n="cat.text"></p>
       </div>
-
-      <div class="filters" role="search">
-        <fieldset class="fgroup">
-          <legend data-i18n="f.type">Turi</legend>
-          <div class="chips" id="fType">
+      <div class="filters reveal">
+        <div class="fgroup">
+          <span class="flabel" id="fTypeL" data-i18n="f.type">Turi</span>
+          <div class="chips" id="fType" role="group" aria-labelledby="fTypeL">
             <button type="button" class="chip" data-v="all" aria-pressed="true" data-i18n="t.all">Hammasi</button>
             <button type="button" class="chip" data-v="modular" aria-pressed="false" data-i18n="t.modular">Modulli</button>
             <button type="button" class="chip" data-v="classic" aria-pressed="false" data-i18n="t.classic">Klassik</button>
             <button type="button" class="chip" data-v="korpacha" aria-pressed="false" data-i18n="t.korpacha">Ko‘rpacha</button>
             <button type="button" class="chip" data-v="topper" aria-pressed="false" data-i18n="t.topper">Topper</button>
           </div>
-        </fieldset>
-        <fieldset class="fgroup">
-          <legend data-i18n="f.firm">Qattiqlik</legend>
-          <div class="chips" id="fFirm">
+        </div>
+        <div class="fgroup">
+          <span class="flabel" id="fFirmL" data-i18n="f.firm">Qattiqlik</span>
+          <div class="chips" id="fFirm" role="group" aria-labelledby="fFirmL">
             <button type="button" class="chip" data-v="0" aria-pressed="true" data-i18n="fm.all">Har qanday</button>
             <button type="button" class="chip" data-v="1" aria-pressed="false"><i class="sw sw--1"></i><span data-i18n="firm.1">Yumshoq</span></button>
             <button type="button" class="chip" data-v="2" aria-pressed="false"><i class="sw sw--2"></i><span data-i18n="firm.2">O‘rta</span></button>
             <button type="button" class="chip" data-v="3" aria-pressed="false"><i class="sw sw--3"></i><span data-i18n="firm.3">Qattiq</span></button>
           </div>
-        </fieldset>
-        <div class="fgroup fgroup--sel">
-          <label for="fSize" data-i18n="f.size">O‘lcham, sm</label>
+        </div>
+        <div class="fgroup">
+          <label class="flabel" for="fSize" data-i18n="f.size">O‘lcham, sm</label>
           <div class="select"><select id="fSize"></select></div>
         </div>
-        <div class="fgroup fgroup--sel">
-          <label for="fSort" data-i18n="f.sort">Saralash</label>
-          <div class="select">
-            <select id="fSort">
-              <option value="pop" data-i18n="s.pop">Mashhurlari</option>
-              <option value="asc" data-i18n="s.asc">Avval arzonlari</option>
-              <option value="desc" data-i18n="s.desc">Avval qimmatlari</option>
-            </select>
-          </div>
-        </div>
       </div>
-      <p class="count" id="catCount" aria-live="polite"></p>
+      <p class="count mono" id="catCount" aria-live="polite"></p>
       <div class="grid" id="grid"></div>
       <div class="empty" id="catEmpty" hidden>
-        <p data-i18n="cat.empty">Bu filtrlar bo‘yicha mahsulot topilmadi.</p>
-        <button type="button" class="btn btn--line" id="catReset" data-i18n="cat.reset">Filtrlarni tozalash</button>
+        <p data-i18n="cat.empty"></p>
+        <button type="button" class="btn btn--glass" id="catReset" data-i18n="cat.reset"></button>
       </div>
     </div>
   </section>
 
-  <!-- Zona konstruktori -->
-  <section class="sec cfg" id="zones" aria-labelledby="cfgTitle">
-    <div class="wrap cfg__in">
-      <div class="cfg__side">
-        <p class="eyebrow" data-i18n="cfg.kicker">Zona konstruktori</p>
-        <h2 class="h2" id="cfgTitle" data-i18n="cfg.title">Tanangizga mos sxemani yig‘ing</h2>
-        <p class="sec__text" data-i18n="cfg.text">Tayyor sxemani tanlang yoki har bir zonani o‘zingiz sozlang.</p>
-        <h3 class="h-label" data-i18n="cfg.presets">Tayyor sxemalar</h3>
-        <div class="presets" id="presets" role="radiogroup" aria-labelledby="cfgTitle"></div>
+  <!-- 3D hikoya: ichida nima bor -->
+  <section class="story" id="inside" aria-labelledby="stTitle">
+    <div class="story__stage">
+      <div class="story__view" id="storyStage" aria-hidden="true"></div>
+      <svg class="labels-svg" id="stLines" aria-hidden="true"><g data-a="cover"><line/><circle r="3.5"/></g><g data-a="comfort"><line/><circle r="3.5"/></g><g data-a="core"><line/><circle r="3.5"/></g><g data-a="base"><line/><circle r="3.5"/></g></svg>
+      <div class="labels" id="stLabels" aria-hidden="true">
+        <div class="glabel" data-a="cover"><b data-i18n="l.cover"></b><span data-i18n="l.cover.s"></span></div>
+        <div class="glabel" data-a="comfort"><b data-i18n="l.comfort"></b><span data-i18n="l.comfort.s"></span></div>
+        <div class="glabel" data-a="core"><b data-i18n="l.core"></b><span data-i18n="l.core.s"></span></div>
+        <div class="glabel" data-a="base"><b data-i18n="l.base"></b><span data-i18n="l.base.s"></span></div>
       </div>
-      <div class="cfg__main">
-        <div class="cfg__view view" data-view="config" aria-hidden="true"><div class="fallback"></div>
-          <div class="ztags" id="cfgTags"><span class="ztag" data-z="0"></span><span class="ztag" data-z="1"></span><span class="ztag" data-z="2"></span></div>
+      <div class="ztags" id="stTags" aria-hidden="true"><span class="ztag" data-z="0"></span><span class="ztag" data-z="1"></span><span class="ztag" data-z="2"></span></div>
+      <div class="story__text wrap">
+        <div class="chapter is-on" data-ch="0">
+          <p class="eyebrow" data-i18n="st.kicker1"></p>
+          <h2 class="h2" id="stTitle" data-i18n="st.title1"></h2>
+          <p class="sec__text" data-i18n="st.text1"></p>
+          <ol class="layer-list">
+            <li><b data-i18n="l.cover"></b><span data-i18n="l.cover.s"></span></li>
+            <li><b data-i18n="l.comfort"></b><span data-i18n="l.comfort.s"></span></li>
+            <li><b data-i18n="l.core"></b><span data-i18n="l.core.s"></span></li>
+            <li><b data-i18n="l.base"></b><span data-i18n="l.base.s"></span></li>
+          </ol>
         </div>
-        <div class="cfg__panel">
-          <h3 class="h-label" data-i18n="cfg.manual">Zonalarni qo‘lda sozlash</h3>
-          <div class="zctl" id="zctl"></div>
-          <div class="cfg__result">
-            <div>
-              <span class="h-label" data-i18n="cfg.scheme">Sxema</span>
-              <span class="scheme" id="cfgScheme">1-3-2</span>
-            </div>
-            <p id="cfgDesc"></p>
-            <button type="button" class="btn btn--primary" id="cfgAdd" data-i18n="cfg.add">Mohir 2.0 ni shu sxema bilan savatga qo‘shish</button>
-          </div>
+        <div class="chapter" data-ch="1">
+          <p class="eyebrow" data-i18n="st.kicker2"></p>
+          <h2 class="h2" data-i18n="st.title2"></h2>
+          <p class="sec__text" data-i18n="st.text2"></p>
+          <div class="scheme-row"><span class="scheme" id="stScheme">2-2-2</span><ul class="legend"><li><i class="sw sw--1"></i>1 · <span data-i18n="firm.1"></span></li><li><i class="sw sw--2"></i>2 · <span data-i18n="firm.2"></span></li><li><i class="sw sw--3"></i>3 · <span data-i18n="firm.3"></span></li></ul></div>
+          <a class="btn btn--glass" href="#quiz" data-i18n="st.cta">Menga qaysi sxema mos?</a>
+        </div>
+        <div class="chapter" data-ch="2">
+          <p class="eyebrow" data-i18n="st.kicker3"></p>
+          <h2 class="h2" data-i18n="st.title3"></h2>
+          <p class="sec__text" data-i18n="st.text3"></p>
         </div>
       </div>
+      <ol class="rail wrap" aria-hidden="true">
+        <li class="is-on"><i></i><span data-i18n="st.ch1"></span></li>
+        <li><i></i><span data-i18n="st.ch2"></span></li>
+        <li><i></i><span data-i18n="st.ch3"></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Tanlash testi -->
+  <section class="sec quiz" id="quiz" aria-labelledby="qzTitle">
+    <div class="wrap quiz__in">
+      <div class="quiz__side reveal">
+        <p class="eyebrow" data-i18n="qz.kicker">Test · 30 soniya</p>
+        <h2 class="h2" id="qzTitle" data-i18n="qz.title"></h2>
+        <p class="sec__text" data-i18n="qz.text"></p>
+      </div>
+      <div class="quiz__box reveal" id="quizBox" aria-live="polite"></div>
     </div>
   </section>
 
   <!-- Solishtirish -->
   <section class="sec compare" id="compare" aria-labelledby="cmpTitle">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="eyebrow" data-i18n="cmp.kicker">Solishtirish</p>
-        <h2 class="h2" id="cmpTitle" data-i18n="cmp.title">Qaysi matras sizga to‘g‘ri keladi</h2>
+      <div class="sec__head reveal">
+        <p class="eyebrow" data-i18n="cmp.kicker"></p>
+        <h2 class="h2" id="cmpTitle" data-i18n="cmp.title"></h2>
       </div>
-      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="cmpTitle">
+      <div class="table-scroll reveal" tabindex="0" role="region" aria-labelledby="cmpTitle">
         <table class="ctable" id="ctable"></table>
       </div>
     </div>
@@ -252,25 +241,24 @@
   <!-- Xizmat -->
   <section class="sec service" id="service" aria-labelledby="srvTitle">
     <div class="wrap">
-      <div class="sec__head">
-        <p class="eyebrow" data-i18n="srv.kicker">Xizmat</p>
-        <h2 class="h2" id="srvTitle" data-i18n="srv.title">Xarid qilishdan qo‘rqmang — avval sinab ko‘ring</h2>
+      <div class="sec__head reveal">
+        <p class="eyebrow" data-i18n="srv.kicker"></p>
+        <h2 class="h2" id="srvTitle" data-i18n="srv.title"></h2>
       </div>
       <ul class="srv">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><h3 data-i18n="srv.1">100 kecha sinov</h3><p data-i18n="srv.1.d"></p></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><h3 data-i18n="srv.2">Bepul yetkazib berish</h3><p data-i18n="srv.2.d"></p></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg><h3 data-i18n="srv.3">0% muddatli to‘lov</h3><p data-i18n="srv.3.d"></p></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="srv.4">Eski matrasni olib ketamiz</h3><p data-i18n="srv.4.d"></p></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><h3 data-i18n="srv.5">10 yil kafolat</h3><p data-i18n="srv.5.d"></p></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M21 18v-5a2 2 0 0 0-2-2H10v7M3 14h18"/><circle cx="6.5" cy="10.5" r="1.8"/></svg><h3 data-i18n="srv.6">Showroomda yotib ko‘ring</h3><p data-i18n="srv.6.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><h3 data-i18n="srv.1"></h3><p data-i18n="srv.1.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><h3 data-i18n="srv.2"></h3><p data-i18n="srv.2.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg><h3 data-i18n="srv.3"></h3><p data-i18n="srv.3.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="srv.4"></h3><p data-i18n="srv.4.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><h3 data-i18n="srv.5"></h3><p data-i18n="srv.5.d"></p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M21 18v-5a2 2 0 0 0-2-2H10v7M3 14h18"/><circle cx="6.5" cy="10.5" r="1.8"/></svg><h3 data-i18n="srv.6"></h3><p data-i18n="srv.6.d"></p></li>
       </ul>
-
-      <div class="shw">
-        <h3 class="h3" data-i18n="shw.title">Showroomlar</h3>
+      <div class="shw reveal">
+        <h3 class="h3" data-i18n="shw.title"></h3>
         <ul class="shw__list">
-          <li><b data-i18n="shw.1">Toshkent, Yunusobod</b><span data-i18n="shw.1.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
-          <li><b data-i18n="shw.2">Toshkent, Chilonzor</b><span data-i18n="shw.2.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
-          <li><b data-i18n="shw.3">Samarqand</b><span data-i18n="shw.3.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
+          <li><b data-i18n="shw.1"></b><span data-i18n="shw.1.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
+          <li><b data-i18n="shw.2"></b><span data-i18n="shw.2.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
+          <li><b data-i18n="shw.3"></b><span data-i18n="shw.3.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
         </ul>
       </div>
     </div>
@@ -279,11 +267,11 @@
   <!-- Savollar -->
   <section class="sec faq" id="faq" aria-labelledby="faqTitle">
     <div class="wrap faq__in">
-      <div class="sec__head">
-        <p class="eyebrow" data-i18n="faq.kicker">Savollar</p>
-        <h2 class="h2" id="faqTitle" data-i18n="faq.title">Ko‘p beriladigan savollar</h2>
+      <div class="sec__head reveal">
+        <p class="eyebrow" data-i18n="faq.kicker"></p>
+        <h2 class="h2" id="faqTitle" data-i18n="faq.title"></h2>
       </div>
-      <div class="faq__list">
+      <div class="faq__list reveal">
         <details><summary data-i18n="faq.1.q"></summary><p data-i18n="faq.1.a"></p></details>
         <details><summary data-i18n="faq.2.q"></summary><p data-i18n="faq.2.a"></p></details>
         <details><summary data-i18n="faq.3.q"></summary><p data-i18n="faq.3.a"></p></details>
@@ -295,98 +283,114 @@
   </section>
 
   <!-- Maslahat -->
-  <section class="sec lead-sec" aria-labelledby="leadTitle">
-    <div class="wrap lead-box">
-      <div>
-        <h2 class="h2" id="leadTitle" data-i18n="lead.title">Tanlashga yordam beramiz</h2>
+  <section class="sec lead" id="lead" aria-labelledby="leadTitle">
+    <div class="wrap lead__in reveal">
+      <div class="lead__copy">
+        <p class="eyebrow" data-i18n="lead.kicker"></p>
+        <h2 class="h2" id="leadTitle" data-i18n="lead.title"></h2>
         <p class="sec__text" data-i18n="lead.text"></p>
+        <div class="actions">
+          <a class="btn btn--glass" data-phone href="tel:+998711234567"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-i18n="lead.call"></span></a>
+          <a class="btn btn--glass" data-telegram href="#" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4 2-15Z"/><path d="m9 13 9-6"/></svg><span data-i18n="lead.tg"></span></a>
+        </div>
       </div>
-      <form class="lead-form" id="leadForm" novalidate>
+      <form class="form card-form" data-lead="consult" novalidate>
         <div class="field">
           <label for="leadName" data-i18n="lead.name">Ismingiz</label>
           <input id="leadName" name="name" autocomplete="given-name" required>
         </div>
         <div class="field">
           <label for="leadPhone" data-i18n="lead.phone">Telefon raqamingiz</label>
-          <input id="leadPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" required>
+          <input id="leadPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" data-phone-input required>
         </div>
-        <p class="form-err" id="leadErr" role="alert" hidden></p>
-        <button class="btn btn--primary" type="submit" data-i18n="lead.submit">Qo‘ng‘iroqni kutaman</button>
+        <p class="form__msg" role="status" hidden></p>
+        <button class="btn btn--accent btn--block" type="submit" data-i18n="lead.submit">Qo‘ng‘iroqni kutaman</button>
+        <p class="form__note" data-i18n="lead.note"></p>
       </form>
     </div>
   </section>
 </main>
 
-<div class="ikat-strip" aria-hidden="true"></div>
 <footer class="foot">
+  <div class="ikat-strip" aria-hidden="true"></div>
   <div class="wrap foot__in">
     <div class="foot__brand">
-      <span class="logo__word" data-brand>tayanch</span>
+      <span class="logo__word">tayanch</span>
       <p data-i18n="foot.about"></p>
     </div>
     <nav class="foot__col" aria-labelledby="fc1">
-      <h3 id="fc1" data-i18n="foot.c1">Katalog</h3>
-      <a href="#catalog" data-i18n="foot.l.mattr">Matraslar</a>
-      <a href="#catalog" data-filter="korpacha" data-i18n="foot.l.korp">Ko‘rpachalar</a>
-      <a href="#catalog" data-filter="topper" data-i18n="foot.l.top">Topperlar</a>
-      <a href="#zones" data-i18n="foot.l.zones">Zona konstruktori</a>
+      <h3 id="fc1" data-i18n="foot.c1"></h3>
+      <a href="#catalog" data-filter="modular" data-i18n="foot.l.mattr"></a>
+      <a href="#catalog" data-filter="korpacha" data-i18n="foot.l.korp"></a>
+      <a href="#catalog" data-filter="topper" data-i18n="foot.l.top"></a>
+      <a href="#quiz" data-i18n="foot.l.quiz"></a>
     </nav>
     <nav class="foot__col" aria-labelledby="fc2">
-      <h3 id="fc2" data-i18n="foot.c2">Xaridorlarga</h3>
-      <a href="#service" data-i18n="foot.l.deliv">Yetkazib berish</a>
-      <a href="#service" data-i18n="foot.l.inst">Muddatli to‘lov</a>
-      <a href="#faq" data-i18n="foot.l.ret">Qaytarish</a>
-      <a href="#service" data-i18n="foot.l.war">Kafolat</a>
+      <h3 id="fc2" data-i18n="foot.c2"></h3>
+      <a href="#service" data-i18n="foot.l.deliv"></a>
+      <a href="#service" data-i18n="foot.l.inst"></a>
+      <a href="#faq" data-i18n="foot.l.ret"></a>
+      <a href="#service" data-i18n="foot.l.war"></a>
     </nav>
     <div class="foot__col">
-      <h3 data-i18n="foot.c3">Aloqa</h3>
-      <a href="tel:+998711234567" class="mono">+998 71 123 45 67</a>
-      <a href="#top" data-i18n="foot.tg">Telegram orqali yozish</a>
-      <span data-i18n="shw.hours">Har kuni 10:00–21:00</span>
+      <h3 data-i18n="foot.c3"></h3>
+      <a class="mono" data-phone href="tel:+998711234567">+998 71 123 45 67</a>
+      <a data-telegram href="#" hidden data-i18n="lead.tg"></a>
+      <span data-i18n="shw.hours"></span>
     </div>
   </div>
   <div class="wrap foot__bottom">
-    <span data-i18n="foot.copy">© 2026 Tayanch. Dizayn konsepti.</span>
+    <span data-i18n="foot.copy"></span>
     <ul class="pay"><li>Click</li><li>Payme</li><li>Uzcard</li><li>Humo</li><li>Visa</li></ul>
   </div>
 </footer>
 
+<!-- Mobil pastki panel -->
+<nav class="mbar" aria-label="Tezkor amallar">
+  <a class="mbar__b" data-phone href="tel:+998711234567"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-i18n="mb.call"></span></a>
+  <a class="mbar__b mbar__b--accent" href="#lead"><span data-i18n="mb.consult"></span></a>
+  <button type="button" class="mbar__b" data-open-cart><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span data-i18n="mb.cart"></span><span class="cart-n" data-cart-count data-zero>0</span></button>
+</nav>
+
+<!-- Mahsulot oynasi -->
+<div class="sheet-backdrop" id="sheetBackdrop" aria-hidden="true" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden>
+  <div class="sheet__stage" id="sheetStage">
+    <div class="sheet__fallback" aria-hidden="true"></div>
+    <svg class="labels-svg" id="shLines" aria-hidden="true"><g data-a="cover"><line/><circle r="3.5"/></g><g data-a="comfort"><line/><circle r="3.5"/></g><g data-a="core"><line/><circle r="3.5"/></g><g data-a="base"><line/><circle r="3.5"/></g></svg>
+    <div class="labels" id="shLabels" aria-hidden="true">
+      <div class="glabel" data-a="cover"><b data-i18n="l.cover"></b><span data-i18n="l.cover.s"></span></div>
+      <div class="glabel" data-a="comfort"><b data-i18n="l.comfort"></b><span data-i18n="l.comfort.s"></span></div>
+      <div class="glabel" data-a="core"><b data-i18n="l.core"></b><span data-i18n="l.core.s"></span></div>
+      <div class="glabel" data-a="base"><b data-i18n="l.base"></b><span data-i18n="l.base.s"></span></div>
+    </div>
+    <button type="button" class="icon-btn sheet__close" data-sheet-close data-i18n-aria="sh.close" aria-label="Yopish">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="sheet__controls">
+      <button type="button" class="icon-btn" data-sheet-nav="-1" data-i18n-aria="sh.prev" aria-label="Oldingi mahsulot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="chip chip--glass" id="shToggle" aria-pressed="true"></button>
+      <span class="mono sheet__drag" data-i18n="sh.drag"></span>
+      <button type="button" class="icon-btn" data-sheet-nav="1" data-i18n-aria="sh.next" aria-label="Keyingi mahsulot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <aside class="sheet__panel" id="shPanel" tabindex="-1"></aside>
+</div>
+
 <!-- Savat -->
 <div class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
-  <div class="drawer__scrim" data-close></div>
-  <aside class="drawer__panel">
+  <div class="drawer__scrim" data-cart-close></div>
+  <aside class="drawer__panel" tabindex="-1">
     <div class="drawer__head">
       <h2 class="h3" id="cartTitle" data-i18n="cart.title">Savat</h2>
-      <button type="button" class="icon-btn" data-close data-i18n-aria="cart.close" aria-label="Savatni yopish">
+      <button type="button" class="icon-btn" data-cart-close data-i18n-aria="cart.close" aria-label="Savatni yopish">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
     <div class="drawer__body" id="cartBody"></div>
-    <div class="drawer__foot" id="cartFoot"></div>
   </aside>
 </div>
 
-<!-- Mahsulot oynasi -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
-  <div class="modal__scrim" data-close></div>
-  <div class="modal__panel">
-    <button type="button" class="icon-btn modal__x" data-close data-i18n-aria="m.close" aria-label="Yopish">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-    </button>
-    <div class="modal__stage">
-      <div class="modal__view view" data-view="modal" aria-hidden="true"><div class="fallback"></div></div>
-      <p class="modal__drag mono" data-i18n="m.drag">Aylantirish uchun suring</p>
-      <div class="range">
-        <label for="mExplode" data-i18n="m.explode">Qatlamlarga ajratish</label>
-        <input type="range" id="mExplode" min="0" max="100" value="0">
-      </div>
-    </div>
-    <div class="modal__info" id="mInfo"></div>
-  </div>
-</div>
-
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-<canvas id="gl" aria-hidden="true"></canvas>
-
 </body>
 </html>
