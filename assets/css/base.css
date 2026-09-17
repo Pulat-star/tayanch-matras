@@ -87,6 +87,10 @@ html.gl-on #gl { opacity: 1; }
 html.gl-front #gl { z-index: 55; }
 html.gl-hide #gl { opacity: 0; transition-duration: .25s; }
 main, .foot { position: relative; z-index: 1; }
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+}
 
 /* ---------- Tipografika ---------- */
 .eyebrow {
@@ -243,8 +247,9 @@ html.is-locked .hdr { padding-right: var(--sbw); }
   pointer-events: none;
 }
 .hero__ui a, .hero__ui button { pointer-events: auto; }
-.hero__top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; }
-.hero__copy { display: flex; flex-direction: column; gap: 18px; }
+.hero__top { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 24px 48px; align-items: start; }
+.hero__copy { display: flex; flex-direction: column; gap: 18px; max-width: 30rem; }
+.hero__copy .actions { margin-top: 4px; }
 .hero .display { font-size: clamp(2.3rem, 1rem + 3.2vw, 4.1rem); max-width: 8ch; }
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -252,7 +257,12 @@ html.is-locked .hdr { padding-right: var(--sbw); }
     linear-gradient(90deg, rgba(7, 8, 13, .82) 0%, rgba(7, 8, 13, .4) 26%, transparent 40%, transparent 62%, rgba(7, 8, 13, .4) 76%, rgba(7, 8, 13, .8) 100%),
     linear-gradient(180deg, rgba(7, 8, 13, .7) 0%, transparent 20%, transparent 72%, rgba(7, 8, 13, .7) 100%);
 }
-.hero__aside { display: flex; flex-direction: column; gap: 20px; justify-self: end; max-width: 440px; }
+.hero__aside { justify-self: end; max-width: 300px; }
+.trust { display: flex; flex-direction: column; }
+.trust li { display: flex; flex-direction: column; gap: 2px; padding: 14px 0; border-top: 1px solid var(--line); }
+.trust li:last-child { border-bottom: 1px solid var(--line); }
+.trust b { font-family: var(--display); font-weight: 400; font-size: 1.35rem; letter-spacing: -.03em; }
+.trust span { font-size: var(--t-s); color: var(--muted); }
 .hero__sub { color: var(--ink-2); text-wrap: pretty; }
 .hero__bottom { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
@@ -281,7 +291,7 @@ html.is-locked .hdr { padding-right: var(--sbw); }
 .sr__name { font-family: var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -.03em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sr__tag { font-size: var(--t-s); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sr__price { display: flex; flex-direction: column; gap: 2px; text-align: right; }
-.sr__price strong { font-family: var(--display); font-weight: 400; font-size: 1.05rem; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sr__price strong { font-family: var(--display); font-weight: 400; font-size: 1.25rem; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .sr__price span { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .sr__btns { display: flex; gap: 8px; }
 .sr__card > * { transition: opacity .35s var(--ease), transform .45s var(--ease), filter .35s var(--ease); }
@@ -340,7 +350,9 @@ html.gl-on .hero__poster { opacity: 0; }
   .hero__aside { gap: 14px; }
   .hero__sub { font-size: var(--t-s); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .hero__aside .btn { min-height: 44px; padding: 0 16px; font-size: var(--t-s); }
-  .hero__aside .btn--glass { display: none; }
+  .hero__aside { display: none; }
+  .hero__copy .btn--glass { display: none; }
+  .hero__copy { gap: 12px; }
   .sr { width: 100%; gap: 8px; }
   .sr__arrow { width: 40px; height: 40px; }
   .sr__card { grid-template-columns: minmax(0, 1fr); flex: 1; min-width: 0; width: auto; padding: 12px 12px 14px 16px; gap: 6px; border-radius: 18px; }

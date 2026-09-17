@@ -87,13 +87,18 @@
         <div class="hero__copy">
           <p class="eyebrow intro" style="--d:.05s" data-i18n="hero.eyebrow">Tayanch · uyqu ko‘rgazmasi</p>
           <h1 class="display intro" style="--d:.15s" id="heroTitle" data-i18n-html="hero.title">Qattiqlikni <em>o‘zingiz</em> tanlang</h1>
-        </div>
-        <div class="hero__aside intro" style="--d:.35s">
-          <p class="hero__sub" data-i18n="hero.sub">Uch zonali modulli matraslar: yelka, bel va oyoq uchun alohida tayanch.</p>
-          <div class="actions">
+          <p class="hero__sub intro" style="--d:.3s" data-i18n="hero.sub">Uch zonali modulli matraslar: yelka, bel va oyoq uchun alohida tayanch.</p>
+          <div class="actions intro" style="--d:.4s">
             <a class="btn btn--accent" href="#quiz" data-track="hero_quiz"><span data-i18n="hero.cta1">30 soniyada matras tanlash</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a class="btn btn--glass" href="#catalog" data-i18n="hero.cta2">Katalogni ko‘rish</a>
           </div>
+        </div>
+        <div class="hero__aside intro" style="--d:.45s">
+          <ul class="trust">
+            <li><b data-i18n="hero.k1n">100 kecha</b><span data-i18n="hero.k1">uyda sinab ko‘ring</span></li>
+            <li><b data-i18n="hero.k2n">0%</b><span data-i18n="hero.k2">12 oygacha muddatli to‘lov</span></li>
+            <li><b data-i18n="hero.k3n">24 soat</b><span data-i18n="hero.k3">Toshkentda bepul yetkazish</span></li>
+          </ul>
         </div>
       </div>
 
@@ -130,7 +135,7 @@
   <section class="sec catalog" id="catalog" aria-labelledby="catTitle">
     <div class="wrap">
       <div class="sec__head reveal">
-        <p class="eyebrow" data-i18n="cat.kicker">Katalog</p>
+        <p class="eyebrow"><span class="sec__n">01</span><span data-i18n="cat.kicker">Katalog</span></p>
         <h2 class="h2" id="catTitle" data-i18n="cat.title">Matraslar, ko‘rpachalar va topperlar</h2>
         <p class="sec__text" data-i18n="cat.text"></p>
       </div>
@@ -217,7 +222,7 @@
   <section class="sec quiz" id="quiz" aria-labelledby="qzTitle">
     <div class="wrap quiz__in">
       <div class="quiz__side reveal">
-        <p class="eyebrow" data-i18n="qz.kicker">Test · 30 soniya</p>
+        <p class="eyebrow"><span class="sec__n">02</span><span data-i18n="qz.kicker">Test · 30 soniya</span></p>
         <h2 class="h2" id="qzTitle" data-i18n="qz.title"></h2>
         <p class="sec__text" data-i18n="qz.text"></p>
       </div>
@@ -229,7 +234,7 @@
   <section class="sec compare" id="compare" aria-labelledby="cmpTitle">
     <div class="wrap">
       <div class="sec__head reveal">
-        <p class="eyebrow" data-i18n="cmp.kicker"></p>
+        <p class="eyebrow"><span class="sec__n">03</span><span data-i18n="cmp.kicker"></span></p>
         <h2 class="h2" id="cmpTitle" data-i18n="cmp.title"></h2>
       </div>
       <div class="table-scroll reveal" tabindex="0" role="region" aria-labelledby="cmpTitle">
@@ -239,22 +244,22 @@
   </section>
 
   <!-- Xizmat -->
-  <section class="sec service" id="service" aria-labelledby="srvTitle">
+  <section class="sec sec--panel service" id="service" aria-labelledby="srvTitle">
     <div class="wrap">
       <div class="sec__head reveal">
-        <p class="eyebrow" data-i18n="srv.kicker"></p>
+        <p class="eyebrow"><span class="sec__n">04</span><span data-i18n="srv.kicker"></span></p>
         <h2 class="h2" id="srvTitle" data-i18n="srv.title"></h2>
       </div>
       <ul class="srv">
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><h3 data-i18n="srv.1"></h3><p data-i18n="srv.1.d"></p></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><h3 data-i18n="srv.2"></h3><p data-i18n="srv.2.d"></p></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg><h3 data-i18n="srv.3"></h3><p data-i18n="srv.3.d"></p></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="srv.4"></h3><p data-i18n="srv.4.d"></p></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><h3 data-i18n="srv.5"></h3><p data-i18n="srv.5.d"></p></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M21 18v-5a2 2 0 0 0-2-2H10v7M3 14h18"/><circle cx="6.5" cy="10.5" r="1.8"/></svg><h3 data-i18n="srv.6"></h3><p data-i18n="srv.6.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><h3 data-i18n="srv.1"></h3><p data-i18n="srv.1.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">02</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><h3 data-i18n="srv.2"></h3><p data-i18n="srv.2.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">03</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg><h3 data-i18n="srv.3"></h3><p data-i18n="srv.3.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">04</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="srv.4"></h3><p data-i18n="srv.4.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">05</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><h3 data-i18n="srv.5"></h3><p data-i18n="srv.5.d"></p></li>
+        <li class="reveal"><span class="srv__n mono">06</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M21 18v-5a2 2 0 0 0-2-2H10v7M3 14h18"/><circle cx="6.5" cy="10.5" r="1.8"/></svg><h3 data-i18n="srv.6"></h3><p data-i18n="srv.6.d"></p></li>
       </ul>
       <div class="shw reveal">
-        <h3 class="h3" data-i18n="shw.title"></h3>
+        <div class="shw__head"><h3 class="h3" data-i18n="shw.title"></h3><a class="link-arrow" href="#lead"><span data-i18n="lead.call"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
         <ul class="shw__list">
           <li><b data-i18n="shw.1"></b><span data-i18n="shw.1.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
           <li><b data-i18n="shw.2"></b><span data-i18n="shw.2.a"></span><span class="mono" data-i18n="shw.hours"></span></li>
@@ -268,7 +273,7 @@
   <section class="sec faq" id="faq" aria-labelledby="faqTitle">
     <div class="wrap faq__in">
       <div class="sec__head reveal">
-        <p class="eyebrow" data-i18n="faq.kicker"></p>
+        <p class="eyebrow"><span class="sec__n">05</span><span data-i18n="faq.kicker"></span></p>
         <h2 class="h2" id="faqTitle" data-i18n="faq.title"></h2>
       </div>
       <div class="faq__list reveal">
@@ -284,9 +289,9 @@
 
   <!-- Maslahat -->
   <section class="sec lead" id="lead" aria-labelledby="leadTitle">
-    <div class="wrap lead__in reveal">
+    <div class="wrap reveal"><div class="lead__in">
       <div class="lead__copy">
-        <p class="eyebrow" data-i18n="lead.kicker"></p>
+        <p class="eyebrow"><span class="sec__n">06</span><span data-i18n="lead.kicker"></span></p>
         <h2 class="h2" id="leadTitle" data-i18n="lead.title"></h2>
         <p class="sec__text" data-i18n="lead.text"></p>
         <div class="actions">
@@ -307,6 +312,7 @@
         <button class="btn btn--accent btn--block" type="submit" data-i18n="lead.submit">Qo‘ng‘iroqni kutaman</button>
         <p class="form__note" data-i18n="lead.note"></p>
       </form>
+      </div>
     </div>
   </section>
 </main>

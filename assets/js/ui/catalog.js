@@ -52,7 +52,7 @@ export function initCatalog(api) {
     const hl = (p) => (p.id === "mohir-20" ? ' class="hl"' : "");
     const row = (label, fn) => `<tr><th scope="row">${esc(label)}</th>${ps.map((p) => `<td${hl(p)}>${fn(p)}</td>`).join("")}</tr>`;
     $("#ctable").innerHTML = `
-      <thead><tr><td></td>${ps.map((p) => `<th scope="col"${hl(p)}><button type="button" data-open="${p.id}">${esc(p.name)}</button></th>`).join("")}</tr></thead>
+      <thead><tr><td></td>${ps.map((p) => `<th scope="col"${hl(p)}><button type="button" data-open="${p.id}">${esc(p.name)}</button>${p.id === "mohir-20" ? `<span class="pill">${esc(t("badge.hit"))}</span>` : ""}</th>`).join("")}</tr></thead>
       <tbody>
         ${row(t("cmp.h"), (p) => `${p.h} ${t("unit.cm")}`)}
         ${row(t("cmp.zones"), (p) => esc(p.zones))}
@@ -60,7 +60,8 @@ export function initCatalog(api) {
         ${row(t("cmp.schemes"), (p) => esc(p.schemes))}
         ${row(t("cmp.load"), (p) => esc(t("sh.loadV", { n: p.load })))}
         ${row(t("cmp.warranty"), (p) => `${p.warranty} ${t("unit.y")}`)}
-        ${row(t("cmp.price", { size: sizeLabel(S.size) }), (p) => `<span class="pc">${money(priceOf(p, S.size).price)}</span>`)}
+        ${row(t("cmp.price", { size: sizeLabel(S.size) }), (p) => `<span class="pc">${money(priceOf(p, S.size).price)}</span><br><span class="inst">${esc(t("sr.from", { x: fmt(monthly(priceOf(p, S.size).price, 12)) }))}</span>`)}
+        <tr class="cta-row"><th scope="row"></th>${ps.map((p) => `<td${hl(p)}><button type="button" class="btn btn--${p.id === "mohir-20" ? "accent" : "glass"} btn--sm" data-open="${p.id}">${esc(t("cmp.pick"))}</button></td>`).join("")}</tr>
       </tbody>`;
   }
 
