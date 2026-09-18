@@ -2,6 +2,8 @@
 
 Uch zonali matraslar sotadigan do‘kon uchun konsept sayt. Bosh ekranda matraslar yoritilgan podium atrofida vitrina bo‘lib turadi; matrasni bossangiz, o‘sha sahnaning o‘zida u yotib, qatlamlarga ajraladi va o‘ng tomonda ma’lumot oynasi ochiladi. Matnlar o‘zbekcha (lotin) va ruscha.
 
+**Dizayn yo‘nalishi:** oq qog‘oz (`#FFFEFC`), osmon rangi (`#5189AC`) va to‘q ko‘k matn (`#010F2B`). Sahifa hikoya tarzida qurilgan: bosh ekran → kechadan tonggacha uchta bob (22:00 → 03:00 → 07:00) → katalog → raqamlangan detallar (I–V) → raqamlar lentasi → tanlash testi. Matn hech qachon 3D yoki naqsh ustida qolmaydi: har bir matn ustuni tinch oq fonda turadi, satr uzunligi 62 belgidan oshmaydi, asosiy o‘lcham 17 px va qator oralig‘i 1,65.
+
 Yig‘ish (build) kerak emas: toza HTML, CSS va ES modullar.
 
 ## Ishga tushirish

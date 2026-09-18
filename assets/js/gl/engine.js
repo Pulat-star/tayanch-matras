@@ -17,7 +17,7 @@ export async function boot() {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
   renderer.setClearColor(0x000000, 0);
   renderer.toneMapping = THREE.NeutralToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 0.95;
   setAniso(Math.min(8, renderer.capabilities.getMaxAnisotropy()));
 
   const weak = matchMedia("(max-width: 760px)").matches || (navigator.hardwareConcurrency || 8) <= 4;

@@ -2,9 +2,9 @@
 // Kenglik bo‘yicha choksiz takrorlanadi.
 
 export const IKAT_PAL = {
-  ikat: ["#141A33", "#2B3FA8", "#C9D6F7", "#D9962B"],
-  gold: ["#1B2140", "#C8892B", "#F1E0BC", "#2B3FA8"],
-  adras: ["#7A1F43", "#E0A13A", "#F6EBD8", "#2B3FA8"],
+  ikat: ["#0B1B33", "#2C6B93", "#DCEAF4", "#8FC0DC"],
+  gold: ["#123049", "#5189AC", "#F1F7FB", "#C8A86A"],
+  adras: ["#153A5C", "#5189AC", "#F6F2E8", "#C8A86A"],
 };
 
 const hex = (h) => {

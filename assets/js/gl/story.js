@@ -35,7 +35,7 @@ export function createStory({ rig, S }) {
   const tagEls = [...document.querySelectorAll("#stTags .ztag")];
 
   const scene = rig.scene({ near: 6, far: 20 });
-  scene.userData.spot.intensity = 40;
+  scene.userData.spot.intensity = 22;
   scene.userData.spot.target.position.set(0, 0.2, 0);
   const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
   const model = makeModel({ kind: "modular", core: 0.15, band: "ikat", quilt: "diamond", zones: [2, 2, 2], W: 1.3 }, { shadow: true });
@@ -44,7 +44,7 @@ export function createStory({ rig, S }) {
   air.pts.scale.set(1, 1, 1.3);
   scene.add(air.pts);
   const glow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({
-    map: TX.radial("glow"), color: 0x4e5fd0, opacity: 0.45, transparent: true, depthWrite: false,
+    map: TX.radial("glow"), color: 0x9fc6de, opacity: 0.5, transparent: true, depthWrite: false,
     blending: THREE.AdditiveBlending, toneMapped: false, fog: false,
   }));
   glow.rotation.x = -Math.PI / 2;
@@ -86,8 +86,8 @@ export function createStory({ rig, S }) {
     const ty = 0.25 + k.e * 0.12;
     cam.position.set(d * Math.sin(k.pol) * Math.sin(k.az), ty + d * Math.cos(k.pol), d * Math.sin(k.pol) * Math.cos(k.az));
     cam.lookAt(0, ty, 0);
-    scene.fog.near = d + 1;
-    scene.fog.far = d + 16;
+    scene.fog.near = d + 3;
+    scene.fog.far = d + 20;
     const cx = box.x + box.w / 2, cy = box.y + box.h * 0.5;
     cam.setViewOffset(W, H, W / 2 - cx, H / 2 - cy, W, H);
   }

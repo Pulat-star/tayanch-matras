@@ -39,43 +39,43 @@ export function createShowroom({ rig, S, on, emit, products, wake }) {
     map, color, opacity, transparent: true, depthWrite: false,
     blending: THREE.AdditiveBlending, toneMapped: false, fog: false,
   });
-  const floor = new THREE.Mesh(plane, glowMat(TX.radial("glow"), 0x4e5fd0, 0.5));
+  const floor = new THREE.Mesh(plane, glowMat(TX.radial("glow"), 0x7fb3d4, 0.75));
   floor.rotation.x = -Math.PI / 2;
   floor.scale.set(10, 6, 1);
-  const podMat = new THREE.MeshStandardMaterial({ color: "#10121B", roughness: 0.3, metalness: 0.7 });
+  const podMat = new THREE.MeshStandardMaterial({ color: "#16354B", roughness: 0.32, metalness: 0.35 });
   const pod = new THREE.Mesh(new THREE.CylinderGeometry(0.98, 1.05, PED, 64), podMat);
   pod.position.y = PED / 2;
-  const ringMat = new THREE.MeshBasicMaterial({ color: 0xb4beff, transparent: true, toneMapped: false });
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0x9fd0ea, transparent: true, toneMapped: false });
   const ring = new THREE.Mesh(new THREE.TorusGeometry(0.99, 0.007, 8, 120), ringMat);
   ring.rotation.x = Math.PI / 2;
   ring.position.y = PED;
-  const halo = new THREE.Mesh(plane, glowMat(TX.radial("ring"), 0x8a9cff, 0.9));
+  const halo = new THREE.Mesh(plane, glowMat(TX.radial("ring"), 0x7fb4d6, 0.6));
   halo.rotation.x = -Math.PI / 2;
   halo.position.y = PED + 0.003;
   halo.scale.set(2.6, 2.6, 1);
-  const lamp = new THREE.Mesh(new THREE.CylinderGeometry(0.72, 0.72, 0.05, 64), podMat);
-  lamp.position.y = 3.4;
-  const lampRing = new THREE.Mesh(new THREE.TorusGeometry(0.68, 0.008, 8, 120), ringMat);
+  const lamp = new THREE.Mesh(new THREE.CylinderGeometry(0.58, 0.58, 0.04, 64), podMat);
+  lamp.position.y = 4.65;
+  const lampRing = new THREE.Mesh(new THREE.TorusGeometry(0.55, 0.007, 8, 120), ringMat);
   lampRing.rotation.x = Math.PI / 2;
-  lampRing.position.y = 3.37;
-  const lampGlow = new THREE.Mesh(plane, glowMat(TX.radial("glow"), 0xaab6ff, 0.8));
+  lampRing.position.y = 4.62;
+  const lampGlow = new THREE.Mesh(plane, glowMat(TX.radial("glow"), 0xd7ecf8, 0.9));
   lampGlow.rotation.x = Math.PI / 2;
-  lampGlow.position.y = 3.365;
-  lampGlow.scale.set(1.7, 1.7, 1);
+  lampGlow.position.y = 4.615;
+  lampGlow.scale.set(1.6, 1.6, 1);
   const beamMat = new THREE.MeshBasicMaterial({
-    map: TX.beam(), color: 0x9fb0ff, opacity: 0.13, transparent: true, depthWrite: false,
+    map: TX.beam(), color: 0xbcdcf0, opacity: 0.12, transparent: true, depthWrite: false,
     blending: THREE.AdditiveBlending, toneMapped: false, fog: false,
   });
-  const beamMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.64, 1.02, 3.2, 48, 1, true), beamMat);
-  beamMesh.position.y = 3.36 - 1.6;
+  const beamMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 1.2, 4.5, 48, 1, true), beamMat);
+  beamMesh.position.y = 4.6 - 2.25;
   const DUST = 110;
   const dustPos = new Float32Array(DUST * 3);
-  const dustCol = new Float32Array(DUST * 4).map((_, i) => (i % 4 === 3 ? 0.7 : [0.79, 0.83, 1][i % 4]));
+  const dustCol = new Float32Array(DUST * 4).map((_, i) => (i % 4 === 3 ? 0.55 : [0.32, 0.54, 0.68][i % 4]));
   const dustSeed = Array.from({ length: DUST }, (_, i) => ({ a: i * 2.39996, r: 0.15 + ((i * 37) % 100) / 115, y: ((i * 53) % 100) / 100, s: 0.03 + ((i * 17) % 10) / 250 }));
   const dustGeo = new THREE.BufferGeometry();
   dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos, 3));
   dustGeo.setAttribute("color", new THREE.BufferAttribute(dustCol, 4));
-  const dustMat = new THREE.PointsMaterial({ size: 0.028, map: TX.radial("dot"), vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
+  const dustMat = new THREE.PointsMaterial({ size: 0.03, map: TX.radial("dot"), vertexColors: true, transparent: true, depthWrite: false });
   const dust = new THREE.Points(dustGeo, dustMat);
   dust.frustumCulled = false;
   const decor = new THREE.Group();
@@ -308,7 +308,12 @@ export function createShowroom({ rig, S, on, emit, products, wake }) {
     const e = easeIO(det);
     const nd = fit(hero, H, portrait ? 2.8 : 8.2, portrait ? 4.4 : 4.4);
     nT.set(0, 1.2, 0);
-    nPos.set(nT.x + pointer.sx * 0.35 * (1 - e), nT.y + 0.3 - pointer.sy * 0.12, nd);
+    const drift = S.reduced ? 0 : 1;
+    nPos.set(
+      nT.x + (pointer.sx * 0.35 + Math.sin(t * 0.13) * 0.22 * drift) * (1 - e),
+      nT.y + 0.3 - pointer.sy * 0.12 + Math.sin(t * 0.19) * 0.06 * drift,
+      nd + Math.sin(t * 0.09) * 0.25 * drift,
+    );
     const dr = detailRect(W, H);
     const dd = fit(dr, H, portrait ? 2.5 : 2.7, portrait ? 1.6 : 1.9);
     dT.set(0, PED + 0.2, 0);
@@ -319,8 +324,8 @@ export function createShowroom({ rig, S, on, emit, products, wake }) {
     cam.position.copy(pos);
     cam.lookAt(tgt);
     const cd = pos.distanceTo(tgt);
-    scene.fog.near = cd - 1.5;
-    scene.fog.far = cd + 12;
+    scene.fog.near = cd - 1;
+    scene.fog.far = cd + 13;
     const ncx = hero.x + hero.w / 2, ncy = hero.y + hero.h * (portrait ? 0.55 : 0.56);
     const dcx = dr.x + dr.w / 2, dcy = dr.y + dr.h * (portrait ? 0.5 : 0.48);
     const cx = lerp(ncx, dcx, e), cy = lerp(ncy, dcy, e);
@@ -328,11 +333,11 @@ export function createShowroom({ rig, S, on, emit, products, wake }) {
 
     // Dekor
     const kIntro = S.reduced ? 1 : easeOut(clamp(introT / 1.6));
-    spot.intensity = 70 * kIntro;
+    spot.intensity = 46 * kIntro;
     spot.target.position.y = lerp(1.2, PED + 0.2, e);
     ringMat.opacity = kIntro;
     halo.material.opacity = 0.9 * kIntro;
-    beamMat.opacity = 0.13 * kIntro * (1 - e);
+    beamMat.opacity = 0.12 * kIntro * (1 - e);
     beamMesh.visible = e < 0.99;
     const lampOn = !portrait && e < 0.6;
     lamp.visible = lampRing.visible = lampGlow.visible = lampOn;
@@ -373,7 +378,7 @@ export function createShowroom({ rig, S, on, emit, products, wake }) {
       it.holder.position.set(x * (1 - flat), y, z * (1 - flat));
       it.holder.visible = (ad < 3.3 || flat > 0.01) && k > 0.002;
       if (!it.holder.visible) continue;
-      const tintT = lerp(0.2, 1, focus) * (1 - away * 0.6);
+      const tintT = lerp(0.62, 1, focus) * (1 - away * 0.3);
       it.tint = S.reduced ? tintT : damp(it.tint, tintT, 6, dt);
       it.model.setTint(it.tint);
 

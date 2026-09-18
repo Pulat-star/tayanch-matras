@@ -50,6 +50,7 @@
       <a href="#catalog" data-i18n="nav.catalog">Katalog</a>
       <a href="#quiz" data-i18n="nav.quiz">Tanlash testi</a>
       <a href="#inside" data-i18n="nav.inside">Ichida nima bor</a>
+      <a href="#details" data-i18n="dt.kicker">Detallar</a>
       <a href="#service" data-i18n="nav.service">Xizmat</a>
       <a href="#faq" data-i18n="nav.faq">Savollar</a>
     </nav>
@@ -187,7 +188,7 @@
       <div class="ztags" id="stTags" aria-hidden="true"><span class="ztag" data-z="0"></span><span class="ztag" data-z="1"></span><span class="ztag" data-z="2"></span></div>
       <div class="story__text wrap">
         <div class="chapter is-on" data-ch="0">
-          <p class="eyebrow" data-i18n="st.kicker1"></p>
+          <p class="eyebrow"><span class="st__time" data-i18n="st.time1"></span><span data-i18n="st.kicker1"></span></p>
           <h2 class="h2" id="stTitle" data-i18n="st.title1"></h2>
           <p class="sec__text" data-i18n="st.text1"></p>
           <ol class="layer-list">
@@ -198,14 +199,14 @@
           </ol>
         </div>
         <div class="chapter" data-ch="1">
-          <p class="eyebrow" data-i18n="st.kicker2"></p>
+          <p class="eyebrow"><span class="st__time" data-i18n="st.time2"></span><span data-i18n="st.kicker2"></span></p>
           <h2 class="h2" data-i18n="st.title2"></h2>
           <p class="sec__text" data-i18n="st.text2"></p>
           <div class="scheme-row"><span class="scheme" id="stScheme">2-2-2</span><ul class="legend"><li><i class="sw sw--1"></i>1 · <span data-i18n="firm.1"></span></li><li><i class="sw sw--2"></i>2 · <span data-i18n="firm.2"></span></li><li><i class="sw sw--3"></i>3 · <span data-i18n="firm.3"></span></li></ul></div>
           <a class="btn btn--glass" href="#quiz" data-i18n="st.cta">Menga qaysi sxema mos?</a>
         </div>
         <div class="chapter" data-ch="2">
-          <p class="eyebrow" data-i18n="st.kicker3"></p>
+          <p class="eyebrow"><span class="st__time" data-i18n="st.time3"></span><span data-i18n="st.kicker3"></span></p>
           <h2 class="h2" data-i18n="st.title3"></h2>
           <p class="sec__text" data-i18n="st.text3"></p>
         </div>
@@ -218,11 +219,45 @@
     </div>
   </section>
 
+
+  <!-- Detallar -->
+  <section class="sec sec--panel details" id="details" aria-labelledby="dtTitle">
+    <div class="wrap">
+      <div class="sec__head reveal">
+        <p class="eyebrow"><span class="sec__n">02</span><span data-i18n="dt.kicker"></span></p>
+        <h2 class="h2" id="dtTitle" data-i18n="dt.title"></h2>
+        <p class="sec__text" data-i18n="dt.text"></p>
+      </div>
+      <ol class="dt">
+        <li class="reveal"><span class="dt__n">I</span><div class="dt__art dt__art--cover" aria-hidden="true"></div><div class="dt__body"><h3 data-i18n="dt.1"></h3><p data-i18n="dt.1.d"></p></div></li>
+        <li class="reveal"><span class="dt__n">II</span><div class="dt__art dt__art--mesh" aria-hidden="true"></div><div class="dt__body"><h3 data-i18n="dt.2"></h3><p data-i18n="dt.2.d"></p></div></li>
+        <li class="reveal"><span class="dt__n">III</span><div class="dt__art dt__art--fiber" aria-hidden="true"></div><div class="dt__body"><h3 data-i18n="dt.3"></h3><p data-i18n="dt.3.d"></p></div></li>
+        <li class="reveal"><span class="dt__n">IV</span><div class="dt__art dt__art--zones" aria-hidden="true"><i></i><i></i><i></i></div><div class="dt__body"><h3 data-i18n="dt.4"></h3><p data-i18n="dt.4.d"></p></div></li>
+        <li class="reveal"><span class="dt__n">V</span><div class="dt__art dt__art--base" aria-hidden="true"></div><div class="dt__body"><h3 data-i18n="dt.5"></h3><p data-i18n="dt.5.d"></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Raqamlar -->
+  <section class="nums" aria-label="Raqamlar">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="nm.kicker"></p>
+      <dl class="nums__grid">
+        <div class="reveal"><dt data-i18n="nm.1n"></dt><dd data-i18n="nm.1"></dd></div>
+        <div class="reveal"><dt data-i18n="nm.2n"></dt><dd data-i18n="nm.2"></dd></div>
+        <div class="reveal"><dt data-i18n="nm.3n"></dt><dd data-i18n="nm.3"></dd></div>
+        <div class="reveal"><dt data-i18n="nm.4n"></dt><dd data-i18n="nm.4"></dd></div>
+        <div class="reveal"><dt data-i18n="nm.5n"></dt><dd data-i18n="nm.5"></dd></div>
+        <div class="reveal"><dt data-i18n="nm.6n"></dt><dd data-i18n="nm.6"></dd></div>
+      </dl>
+    </div>
+  </section>
+
   <!-- Tanlash testi -->
   <section class="sec quiz" id="quiz" aria-labelledby="qzTitle">
     <div class="wrap quiz__in">
       <div class="quiz__side reveal">
-        <p class="eyebrow"><span class="sec__n">02</span><span data-i18n="qz.kicker">Test · 30 soniya</span></p>
+        <p class="eyebrow"><span class="sec__n">03</span><span data-i18n="qz.kicker">Test · 30 soniya</span></p>
         <h2 class="h2" id="qzTitle" data-i18n="qz.title"></h2>
         <p class="sec__text" data-i18n="qz.text"></p>
       </div>
@@ -234,7 +269,7 @@
   <section class="sec compare" id="compare" aria-labelledby="cmpTitle">
     <div class="wrap">
       <div class="sec__head reveal">
-        <p class="eyebrow"><span class="sec__n">03</span><span data-i18n="cmp.kicker"></span></p>
+        <p class="eyebrow"><span class="sec__n">04</span><span data-i18n="cmp.kicker"></span></p>
         <h2 class="h2" id="cmpTitle" data-i18n="cmp.title"></h2>
       </div>
       <div class="table-scroll reveal" tabindex="0" role="region" aria-labelledby="cmpTitle">
@@ -247,7 +282,7 @@
   <section class="sec sec--panel service" id="service" aria-labelledby="srvTitle">
     <div class="wrap">
       <div class="sec__head reveal">
-        <p class="eyebrow"><span class="sec__n">04</span><span data-i18n="srv.kicker"></span></p>
+        <p class="eyebrow"><span class="sec__n">05</span><span data-i18n="srv.kicker"></span></p>
         <h2 class="h2" id="srvTitle" data-i18n="srv.title"></h2>
       </div>
       <ul class="srv">
@@ -273,7 +308,7 @@
   <section class="sec faq" id="faq" aria-labelledby="faqTitle">
     <div class="wrap faq__in">
       <div class="sec__head reveal">
-        <p class="eyebrow"><span class="sec__n">05</span><span data-i18n="faq.kicker"></span></p>
+        <p class="eyebrow"><span class="sec__n">06</span><span data-i18n="faq.kicker"></span></p>
         <h2 class="h2" id="faqTitle" data-i18n="faq.title"></h2>
       </div>
       <div class="faq__list reveal">
@@ -291,7 +326,7 @@
   <section class="sec lead" id="lead" aria-labelledby="leadTitle">
     <div class="wrap reveal"><div class="lead__in">
       <div class="lead__copy">
-        <p class="eyebrow"><span class="sec__n">06</span><span data-i18n="lead.kicker"></span></p>
+        <p class="eyebrow"><span class="sec__n">07</span><span data-i18n="lead.kicker"></span></p>
         <h2 class="h2" id="leadTitle" data-i18n="lead.title"></h2>
         <p class="sec__text" data-i18n="lead.text"></p>
         <div class="actions">

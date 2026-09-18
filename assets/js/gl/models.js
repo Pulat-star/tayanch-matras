@@ -23,22 +23,24 @@ let shared = null;
 function sharedMats() {
   if (shared) return shared;
   shared = {
-    base: new THREE.MeshStandardMaterial({ color: "#23283C", roughness: 0.95 }),
-    frame: new THREE.MeshStandardMaterial({ color: "#2F3448", roughness: 0.5, metalness: 0.2 }),
-    shadow: new THREE.MeshBasicMaterial({ map: TX.radial("shadow"), transparent: true, depthWrite: false, toneMapped: false, fog: false }),
+    base: new THREE.MeshStandardMaterial({ color: "#2A3C4E", roughness: 0.95 }),
+    frame: new THREE.MeshStandardMaterial({ color: "#39495C", roughness: 0.5, metalness: 0.2 }),
+    shadow: new THREE.MeshBasicMaterial({ map: TX.radial("shadow"), color: 0x5a7d99, transparent: true, opacity: 0.95, depthWrite: false, toneMapped: false, fog: false }),
   };
   return shared;
 }
 
 // Shaffofligi o‘zgaradigan materiallar doim transparent — dastur (shader) almashmaydi
 const fabric = (opts) => new THREE.MeshPhysicalMaterial({
-  roughness: 0.88, sheen: 0.6, sheenRoughness: 0.6, sheenColor: new THREE.Color("#dfe5ff"),
+  roughness: 0.86, sheen: 0.65, sheenRoughness: 0.6, sheenColor: new THREE.Color("#ffffff"),
   transparent: true, ...opts,
 });
 // Vitrinadagi yon mahsulotlarni xiralashtirish: faqat rang (uniform) o‘zgaradi, shader emas
+const WHITE = new THREE.Color(0xffffff);
 function tinter(mats) {
   for (const m of mats) m.userData.base = m.color.clone();
-  return (v) => { for (const m of mats) m.color.copy(m.userData.base).multiplyScalar(v); };
+  // v=1 — o‘z rangi, v<1 — oq tumanga singib ketadi
+  return (v) => { for (const m of mats) m.color.copy(m.userData.base).lerp(WHITE, 1 - v); };
 }
 function fade(list, mat, o) {
   mat.opacity = o;
@@ -299,7 +301,7 @@ export function makeAir(THREEref = THREE) {
   const geo = new THREEref.BufferGeometry();
   geo.setAttribute("position", new THREEref.BufferAttribute(pos, 3));
   geo.setAttribute("color", new THREEref.BufferAttribute(col, 4));
-  const mat = new THREEref.PointsMaterial({ size: 0.045, map: TX.radial("dot"), vertexColors: true, transparent: true, depthWrite: false });
+  const mat = new THREEref.PointsMaterial({ size: 0.05, map: TX.radial("dot"), vertexColors: true, transparent: true, depthWrite: false });
   const pts = new THREEref.Points(geo, mat);
   pts.frustumCulled = false;
   return {
@@ -312,9 +314,9 @@ export function makeAir(THREEref = THREE) {
         pos[i * 3] = q.x + Math.sin(time * 0.8 + q.w) * 0.04 * u;
         pos[i * 3 + 1] = 0.05 + u * 1.1;
         pos[i * 3 + 2] = q.z;
-        col[i * 4] = 0.55;
-        col[i * 4 + 1] = 0.62;
-        col[i * 4 + 2] = 1;
+        col[i * 4] = 0.18;
+        col[i * 4 + 1] = 0.42;
+        col[i * 4 + 2] = 0.58;
         col[i * 4 + 3] = air * smooth(0, 0.15, u) * (1 - smooth(0.55, 1, u));
       });
       geo.attributes.position.needsUpdate = true;

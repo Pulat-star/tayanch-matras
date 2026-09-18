@@ -9,7 +9,7 @@ const DEG = Math.PI / 180;
 
 export function createThumbs({ renderer, rig, onReady }) {
   const scene = rig.scene({ near: 30, far: 60 });
-  scene.userData.spot.intensity = 30;
+  scene.userData.spot.intensity = 16;
   scene.userData.spot.target.position.set(0, 0.1, 0);
   const cam = new THREE.PerspectiveCamera(24, 4 / 3, 0.1, 50);
   const holder = new THREE.Group();
