@@ -8,15 +8,14 @@ const DICT = { uz, ru };
 export const S = {
   lang: "uz",
   size: "160x200",
-  cart: [],
   reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
   glReady: false,
   // vitrina
   index: 0,
   // mahsulot oynasi
   sheet: { open: false, id: null, size: null, months: 12, scheme: null, explode: true },
-  // scroll hikoyasi (0..1)
-  story: { p: 0, zones: [2, 2, 2] },
+  // scroll akti (0..1)
+  act: { p: 0 },
 };
 
 const bus = new EventTarget();

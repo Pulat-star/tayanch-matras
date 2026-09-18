@@ -29,7 +29,7 @@ export function initHero(api) {
       </div>
       <div class="sr__btns">
         <button type="button" class="btn btn--light btn--sm" data-act="open">${esc(t("sr.more"))}</button>
-        <button type="button" class="btn btn--accent btn--sm" data-act="add">${esc(t("card.add"))}</button>
+        <button type="button" class="btn btn--accent btn--sm" data-callback="${p.id}" data-size="${S.size}">${esc(t("cta.callback"))}</button>
       </div>`;
   }
 
@@ -69,9 +69,7 @@ export function initHero(api) {
     const b = e.target.closest("[data-act]");
     if (!b) return;
     interacted = true;
-    const p = PRODUCTS[S.index];
-    if (b.dataset.act === "open") api.openSheet(p.id, { from: "hero" });
-    else api.addToCart(p.id, S.size);
+    if (b.dataset.act === "open") api.openSheet(PRODUCTS[S.index].id, { from: "hero" });
   });
   $(".sr").addEventListener("keydown", (e) => {
     if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;

@@ -46,9 +46,9 @@ export function initQuiz(api) {
           <p class="inst">${esc(t("sr.from", { x: fmt(monthly(price, 12)) }))}</p>
         </div>
         <div class="qz__cta">
-          <button type="button" class="btn btn--accent" data-q="add">${esc(t("sh.add"))}</button>
+          <button type="button" class="btn btn--accent" data-callback="${p.id}" data-size="${res.size}"${p.scheme ? ` data-scheme="${res.scheme.join("-")}"` : ""}>${esc(t("cta.callback"))}</button>
           <button type="button" class="btn btn--glass" data-q="open">${esc(t("qz.open"))}</button>
-          <a class="btn btn--glass" href="#lead" data-q="consult">${esc(t("qz.consult"))}</a>
+          <a class="btn btn--glass" data-phone href="tel:+998711234567">${esc(t("cta.call"))}</a>
         </div>
       </div>`;
   }
@@ -81,10 +81,7 @@ export function initQuiz(api) {
     const a = b.dataset.q;
     if (a === "back") { step = Math.max(0, step - 1); render(); }
     else if (a === "restart") { step = 0; ans = {}; res = null; render(); }
-    else if (a === "add") {
-      const p = BY_ID[res.id];
-      api.addToCart(res.id, res.size, p.scheme ? res.scheme.join("-") : null);
-    } else if (a === "open") {
+    else if (a === "open") {
       api.openSheet(res.id, { scheme: res.scheme, size: res.size, from: "quiz" });
     }
   });

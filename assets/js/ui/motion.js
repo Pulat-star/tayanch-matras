@@ -38,13 +38,14 @@ export function initMotion() {
     reveal.forEach((el) => el.classList.add("is-in"));
   }
 
-  // Scroll hikoyasi
+  // Scroll akti
   const sec = $("#inside");
   const chapters = $$(".chapter", sec);
   const rail = $$(".rail li", sec);
   const schemeEl = $("#stScheme");
   const tags = $$("#stTags .ztag");
-  const B = [0, 0.36, 0.7, 1];
+  // Boblar scroll bo‘yicha: har biri sahna bosqichiga to‘g‘ri keladi
+  const B = [0, 0.26, 0.44, 0.64, 0.86, 1];
   let lastCh = 0;
   let lastZ = "";
 
@@ -57,9 +58,10 @@ export function initMotion() {
 
   function story() {
     const r = sec.getBoundingClientRect();
-    const p = S.reduced ? 0.2 : clamp(-r.top / Math.max(1, r.height - innerHeight));
-    S.story.p = p;
-    const ch = p < B[1] ? 0 : p < B[2] ? 1 : 2;
+    const p = S.reduced ? 0.34 : clamp(-r.top / Math.max(1, r.height - innerHeight));
+    S.act.p = p;
+    let ch = 0;
+    while (ch < B.length - 2 && p >= B[ch + 1]) ch++;
     if (!S.reduced && ch !== lastCh) {
       chapters.forEach((c, i) => c.classList.toggle("is-on", i === ch));
       lastCh = ch;
@@ -68,8 +70,7 @@ export function initMotion() {
       li.style.setProperty("--fill", clamp((p - B[i]) / (B[i + 1] - B[i])).toFixed(3));
       li.classList.toggle("is-on", i === ch);
     });
-    const z = p < 0.49 ? [2, 2, 2] : p < 0.58 ? [1, 3, 2] : [1, 2, 1];
-    S.story.zones = z;
+    const z = p < 0.55 ? [2, 2, 2] : p < 0.61 ? [1, 3, 2] : [1, 2, 1];
     const zs = z.join("-");
     if (zs !== lastZ) {
       lastZ = zs;

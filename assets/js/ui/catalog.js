@@ -10,12 +10,9 @@ export function initCatalog(api) {
   let type = "all";
   let firm = 0;
 
-  const inCart = (id) => S.cart.some((c) => c.id === id);
-
   function card(p) {
     const ok = available(p, S.size);
     const { price, old } = priceOf(p, S.size);
-    const added = inCart(p.id);
     const badges = [
       p.badge ? `<span class="badge${p.badge === "new" ? " badge--new" : ""}">${esc(t("badge." + p.badge))}</span>` : "",
       p.disc ? `<span class="badge badge--sale">−${p.disc}%</span>` : "",
@@ -34,7 +31,7 @@ export function initCatalog(api) {
         <p class="inst${ok ? "" : " is-warn"}">${esc(ok ? t("sr.from", { x: fmt(monthly(price, 12)) }) : t("cat.nosize", { max: sizeLabel(p.maxSize) }))}</p>
         <div class="card__actions">
           <button type="button" class="btn btn--glass btn--sm" data-act="open">${esc(t("card.more"))}</button>
-          <button type="button" class="btn btn--accent btn--sm${added ? " is-done" : ""}" data-act="add">${esc(t(added ? "card.added" : "card.add"))}</button>
+          <button type="button" class="btn btn--accent btn--sm" data-callback="${p.id}" data-size="${S.size}">${esc(t("cta.callback"))}</button>
         </div>
       </div>
     </article>`;
@@ -106,25 +103,13 @@ export function initCatalog(api) {
   }));
 
   grid.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-act]");
+    const b = e.target.closest('[data-act="open"]');
     const c = e.target.closest(".card");
-    if (!b || !c) return;
-    if (b.dataset.act === "open") api.openSheet(c.dataset.id, { from: "catalog" });
-    else if (b.classList.contains("is-done")) api.openCart();
-    else api.addToCart(c.dataset.id, S.size);
+    if (b && c) api.openSheet(c.dataset.id, { from: "catalog" });
   });
   $("#ctable").addEventListener("click", (e) => {
     const b = e.target.closest("[data-open]");
     if (b) api.openSheet(b.dataset.open, { from: "compare" });
-  });
-
-  on("cart", () => {
-    $$(".card", grid).forEach((c) => {
-      const b = $('[data-act="add"]', c);
-      const added = inCart(c.dataset.id);
-      b.classList.toggle("is-done", added);
-      b.textContent = t(added ? "card.added" : "card.add");
-    });
   });
   on("lang", () => { render(); renderCompare(); });
 

@@ -1,6 +1,7 @@
 // Mahsulot oynasi: chapda 3D (vitrina sahnasining o‘zi), o‘ngda ma’lumot va xarid.
 // Manzil #p/<id> bo‘ladi — havolani ulashish va «orqaga» tugmasi ishlaydi.
 import { S, $, $$, t, tList, esc, money, fmt, priceOf, monthly, available, effSize, sizeLabel, firmBar, firmText, on, emit, track, lockScroll, trapFocus, releaseFocus, input } from "../core.js";
+import { CONFIG } from "../config.js";
 import { PRODUCTS, SIZES, SCHEMES, BY_ID } from "../data.js";
 
 // iframe ichida manzilni o‘zgartirish taqiqlangan bo‘lishi mumkin — shuning uchun himoyalangan
@@ -42,10 +43,8 @@ export function initSheet(api) {
     const p = BY_ID[sh.id];
     const { price, old } = priceOf(p, sh.size);
     const m = sh.months;
-    const added = S.cart.some((c) => c.id === p.id && c.size === sh.size);
-    const phone = $("#qPhone", panel)?.value || "";
-    const addLabel = esc(t(added ? "sh.added" : "sh.add"));
     const perMonth = esc(t("sh.perMonth", { x: fmt(monthly(price, m)) }));
+    const schemeAttr = sh.scheme ? ` data-scheme="${sh.scheme.join("-")}"` : "";
     panel.innerHTML = `<div class="shp">
       <div class="shp__head">
         <p class="eyebrow">${esc(t("t." + p.type))}${p.badge ? " · " + esc(t("badge." + p.badge)) : ""}</p>
@@ -79,23 +78,14 @@ export function initSheet(api) {
           </div>
           <p class="shp__month">${perMonth}</p>
         </div>
-        <button type="button" class="btn btn--accent btn--block${added ? " is-done" : ""}" data-act="add">${addLabel}</button>
+        <button type="button" class="btn btn--accent btn--block" data-callback="${p.id}" data-size="${sh.size}"${schemeAttr}>${esc(t("cb.submit"))}</button>
+        <a class="btn btn--glass btn--block" data-phone href="tel:${CONFIG.phone}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>${esc(CONFIG.phoneLabel)}</span></a>
         <ul class="guar">
           <li>${IC.moon}${esc(t("sh.g1"))}</li>
           <li>${IC.truck}${esc(t("sh.g2"))}</li>
           <li>${IC.shield}${esc(t("sh.g3", { n: p.warranty }))}</li>
         </ul>
       </div>
-      <form class="quick" data-lead="quick" novalidate>
-        <h3>${esc(t("sh.quick"))}</h3>
-        <p>${esc(t("sh.quickText"))}</p>
-        <div class="field">
-          <label class="vh" for="qPhone">${esc(t("lead.phone"))}</label>
-          <input id="qPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" data-phone-input required value="${esc(phone)}">
-        </div>
-        <button type="submit" class="btn btn--light">${esc(t("sh.quickBtn"))}</button>
-        <p class="form__msg" role="status" hidden></p>
-      </form>
       <div>
         <h3 class="shp__label">${esc(t("sh.specs"))}</h3>
         <dl class="specs">
@@ -109,7 +99,7 @@ export function initSheet(api) {
       </div>
       <div class="shp__sticky">
         <div><strong>${money(price)}</strong><span>${perMonth}</span></div>
-        <button type="button" class="btn btn--accent btn--sm${added ? " is-done" : ""}" data-act="add">${addLabel}</button>
+        <button type="button" class="btn btn--accent btn--sm" data-callback="${p.id}" data-size="${sh.size}"${schemeAttr}>${esc(t("cta.callback"))}</button>
       </div>
     </div>`;
     toggleLabel();
@@ -184,9 +174,6 @@ export function initSheet(api) {
         emit("sheet:explode");
       }
       track("scheme_select", { id: sh.id, scheme: b.dataset.scheme });
-    } else if (b.dataset.act === "add") {
-      if (b.classList.contains("is-done")) api.openCart();
-      else api.addToCart(sh.id, sh.size, sh.scheme ? sh.scheme.join("-") : null);
     }
   });
   toggle.addEventListener("click", () => {
@@ -201,7 +188,7 @@ export function initSheet(api) {
   }));
   $("[data-sheet-close]", el).addEventListener("click", () => close());
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && S.sheet.open && !api.cartOpen()) close();
+    if (e.key === "Escape" && S.sheet.open) close();
   });
   addEventListener("popstate", () => {
     const m = location.hash.match(/^#p\/([\w-]+)/);
@@ -212,11 +199,6 @@ export function initSheet(api) {
     }
   });
   on("lang", () => { if (S.sheet.open) render(); });
-  on("cart", () => {
-    if (!S.sheet.open) return;
-    const had = panel.contains(document.activeElement) && document.activeElement.dataset.act === "add";
-    render(had ? '.shp__buy [data-act="add"]' : null);
-  });
 
   return { open, close };
 }

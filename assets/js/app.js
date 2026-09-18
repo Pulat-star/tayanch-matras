@@ -5,7 +5,7 @@ import { ikatDataURL } from "./gl/ikat.js";
 import { initHero } from "./ui/hero.js";
 import { initCatalog } from "./ui/catalog.js";
 import { initSheet } from "./ui/sheet.js";
-import { initCart } from "./ui/cart.js";
+import { initCallback } from "./ui/callback.js";
 import { initQuiz } from "./ui/quiz.js";
 import { initForms } from "./ui/forms.js";
 import { initMotion } from "./ui/motion.js";
@@ -49,9 +49,6 @@ function boot() {
   S.lang = pickLang();
   const size = store.get("size", null);
   if (SIZES.some((s) => s.id === size)) S.size = size;
-  const saved = store.get("cart", []);
-  S.cart = Array.isArray(saved) ? saved.filter((c) => BY_ID[c.id] && c.qty > 0 && c.key) : [];
-
   try { html.style.setProperty("--ikat", `url("${ikatDataURL()}")`); } catch { /* gradient zaxirasi qoladi */ }
 
   applyI18n();
@@ -59,18 +56,16 @@ function boot() {
   setLangButtons();
 
   const api = {};
-  const cart = initCart(api);
+  const callback = initCallback();
   const sheet = initSheet(api);
   Object.assign(api, {
-    addToCart: cart.add,
-    openCart: cart.open,
-    cartOpen: cart.isOpen,
     openSheet: sheet.open,
     closeSheet: sheet.close,
+    openCallback: callback.open,
     leadExtra(type) {
-      if (type === "quick") return { product: S.sheet.id, size: S.sheet.size, scheme: S.sheet.scheme?.join("-") || null };
-      if (type === "order") return { cart: S.cart.map(({ id, size, scheme, qty }) => ({ id, size, scheme, qty })) };
-      return {};
+      if (type !== "callback") return {};
+      const c = callback.context();
+      return c ? { product: c.id, size: c.size || null, scheme: c.scheme || null } : {};
     },
   });
   initHero(api);

@@ -2,6 +2,10 @@
 
 Uch zonali matraslar sotadigan do‘kon uchun konsept sayt. Bosh ekranda matraslar yoritilgan podium atrofida vitrina bo‘lib turadi; matrasni bossangiz, o‘sha sahnaning o‘zida u yotib, qatlamlarga ajraladi va o‘ng tomonda ma’lumot oynasi ochiladi. Matnlar o‘zbekcha (lotin) va ruscha.
 
+**Maqsad:** savat va onlayn to‘lov yo‘q. Mijoz modellarni ko‘rib chiqadi, keyin telefon raqamini qoldiradi yoki darhol qo‘ng‘iroq qiladi. Har bir tugma shu ikki amalga olib boradi.
+
+**Scroll — plyer.** Bosh ekrandan keyin uzun akt boshlanadi va sahifani aylantirish videoni o‘ynatgandek ishlaydi: matras podiumga yotadi → qatlamlarga ajraladi (izohlari bilan) → ustki qatlamlar uchib, uch zona va sxemalar ko‘rsatiladi → tola orasidan havo ko‘tariladi → matras o‘rniga qaytadi va qolgan modellar yoniga qaytib keladi. Hammasi bitta 3D sahnada, bitta uzluksiz harakat sifatida.
+
 **Dizayn yo‘nalishi:** oq qog‘oz (`#FFFEFC`), osmon rangi (`#5189AC`) va to‘q ko‘k matn (`#010F2B`). Sahifa hikoya tarzida qurilgan: bosh ekran → kechadan tonggacha uchta bob (22:00 → 03:00 → 07:00) → katalog → raqamlangan detallar (I–V) → raqamlar lentasi → tanlash testi. Matn hech qachon 3D yoki naqsh ustida qolmaydi: har bir matn ustuni tinch oq fonda turadi, satr uzunligi 62 belgidan oshmaydi, asosiy o‘lcham 17 px va qator oralig‘i 1,65.
 
 Yig‘ish (build) kerak emas: toza HTML, CSS va ES modullar.
@@ -28,8 +32,8 @@ assets/js/
   i18n/uz.js · i18n/ru.js  barcha matnlar
   core.js                  holat, hodisalar, tarjima, narx hisobi
   app.js                   ishga tushirish tartibi
-  ui/                      vitrina paneli, katalog, oyna, savat, test, formalar, animatsiyalar
-  gl/                      3D: dvigatel, vitrina, scroll hikoyasi, modellar, teksturalar
+  ui/                      vitrina paneli, katalog, mahsulot oynasi, qo‘ng‘iroq oynasi, test, formalar
+  gl/                      3D: dvigatel, vitrina va scroll akti, modellar, teksturalar
 ```
 
 ## Nega sayt qotmaydi
@@ -45,17 +49,16 @@ O‘lchov (Chrome, M1): sahifa ~0,9 s da chiziladi, 3D ~1,6 s da qo‘shiladi, o
 
 ## Konversiya uchun nima qilingan
 
-- Bosh ekranda: aniq va’da, 100 kecha sinov, bepul yetkazish va muddatli to‘lov; ikkita harakat tugmasi.
+- Yagona maqsadli amal: «Raqamni qoldirish» oynasi (ism + telefon) va «Qo‘ng‘iroq qilish» havolasi. Oyna qaysi mahsulotdan ochilgani ham arizaga qo‘shib yuboriladi.
 - Har bir narx yonida oylik to‘lov ko‘rsatilgan.
-- 4 savollik tanlash testi shaxsiy tavsiya beradi (model + zona sxemasi + o‘lcham) va darhol savatga qo‘shish taklif qiladi.
-- Mahsulot oynasida: «kimga mos» ro‘yxati, zona sxemasi, tejaladigan summa, kafolatlar CTA yonida, «bir qadamda buyurtma» (faqat telefon raqami).
-- Telefonda pastda doimiy panel: qo‘ng‘iroq, maslahat, savat.
-- Savatda ikki qadamli buyurtma: ro‘yxat → ism, telefon, shahar, to‘lov usuli.
-- Har bir muhim harakat `window.dataLayer` ga yoziladi (`view_item`, `add_to_cart`, `begin_checkout`, `purchase`, `quiz_complete`, `generate_lead`) — Google Analytics yoki Meta pikselini ulash oson.
+- 4 savollik tanlash testi shaxsiy tavsiya beradi (model + zona sxemasi + o‘lcham), keyin darhol raqam so‘raydi.
+- Mahsulot oynasida: «kimga mos» ro‘yxati, zona sxemasi, tejaladigan summa, kafolatlar tugma yonida, telefon raqami ko‘rinib turadi.
+- Telefonda pastda doimiy panel: qo‘ng‘iroq, raqam qoldirish, katalog.
+- Har bir muhim harakat `window.dataLayer` ga yoziladi (`view_item`, `callback_open`, `call_click`, `quiz_complete`, `generate_lead`) — Google Analytics yoki Meta pikselini ulash oson.
 
 ## Boshqaruv
 
-- Vitrinani surish, strelkalar, nuqtalar, klaviatura ← → yoki trekpadda gorizontal skroll.
+- Bosh ekranda vitrinani surish, strelkalar, nuqtalar, klaviatura ← → yoki trekpadda gorizontal skroll. Pastga scroll qilinsa, hikoya akti boshlanadi.
 - Matrasni bosish — oyna ochiladi (manzil `#p/<id>` bo‘ladi, «orqaga» tugmasi ishlaydi).
 - Oynada modelni barmoq yoki sichqoncha bilan aylantirish, «Qatlamlarni ajratish / Yig‘ish», ko‘rpacha uchun «Buklash / Ochish».
 - `prefers-reduced-motion` yoqilgan bo‘lsa animatsiyalar o‘chadi, hikoya oddiy ro‘yxatga aylanadi. WebGL bo‘lmasa, sayt to‘liq ishlaydi — faqat 3D o‘rniga CSS rasmlar chiqadi.

@@ -8,7 +8,6 @@ import { PRODUCTS } from "../data.js";
 import { setAniso } from "./textures.js";
 import { createRig } from "./rig.js";
 import { createShowroom } from "./showroom.js";
-import { createStory } from "./story.js";
 import { createThumbs } from "./thumbs.js";
 
 export async function boot() {
@@ -47,7 +46,6 @@ export async function boot() {
   const showroom = createShowroom({ rig, S, on, emit, products: PRODUCTS, wake });
   showroom.setIndex(S.index);
   await showroom.build(nextFrame);
-  const story = createStory({ rig, S });
   await nextFrame();
   const thumbs = createThumbs({
     renderer, rig,
@@ -57,7 +55,7 @@ export async function boot() {
 
   // Teksturalarni oldindan yuklash va shaderlarni fonda kompilyatsiya qilish
   const texs = new Set();
-  for (const sc of [showroom.scene, story.scene]) {
+  for (const sc of [showroom.scene]) {
     sc.traverse((o) => {
       const m = o.material;
       if (m) for (const k of ["map", "bumpMap"]) if (m[k]) texs.add(m[k]);
@@ -70,11 +68,10 @@ export async function boot() {
   showroom.update(0, 0, cw, ch);
   try {
     await renderer.compileAsync(showroom.scene, showroom.camera);
-    await renderer.compileAsync(story.scene, story.camera);
   } catch {
     /* eski brauzer: birinchi kadrda kompilyatsiya bo‘ladi */
   }
-  const stages = [showroom, story];
+  const stages = [showroom];
   let last = performance.now();
   let acc = 0, cnt = 0;
   const heroTop = document.querySelector(".hero").getBoundingClientRect().bottom > 0;
